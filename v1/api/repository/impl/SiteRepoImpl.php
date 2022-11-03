@@ -22,7 +22,7 @@ class SiteRepoImpl implements SiteRepo
         }
     }
 
-    public function deleteSite($site): bool
+    public function deleteSite($id): bool
     {
         return false;
     }
@@ -37,9 +37,20 @@ class SiteRepoImpl implements SiteRepo
         }
     }
 
-    public function searchSite($site)
+    public function searchSite($id): array
     {
-        // TODO: Implement searchSite() method.
+        $data = [];
+        $resultSet = $this->connection->query("SELECT * FROM site WHERE siteID='{$id}'");
+        $i = 0;
+        while ($row = $resultSet->fetch_assoc()) {
+            $data[$i]['siteId'] = $row['siteID'];
+            $data[$i]['siteName'] = $row['siteName'];
+            $data[$i]['siteLocation'] = $row['siteLocation'];
+            $data[$i]['projectBudet'] = $row['projectBudet'];
+            $i++;
+        }
+
+        return $data;
     }
 
     public function getAllSite(): array

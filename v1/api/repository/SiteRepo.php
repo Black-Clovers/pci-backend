@@ -8,11 +8,11 @@ interface SiteRepo
 
     public function addSite(Site $site): bool;
 
-    public function deleteSite($site): bool;
+    public function deleteSite($id): bool;
 
     public function updateSite(Site $site): bool;
 
-    public function searchSite($site);
+    public function searchSite($id): array;
 
     public function getAllSite(): array;
 }

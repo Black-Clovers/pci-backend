@@ -37,9 +37,21 @@ class ItemRepoImpl implements ItemRepo
         }
     }
 
-    public function searchItem($code)
+    public function searchItem($id): array
     {
-        // TODO: Implement searchItem() method.
+        $data = [];
+        $resultSet = $this->connection->query("SELECT * FROM item WHERE itemID='{$id}'");
+        $i = 0;
+        while ($row = $resultSet->fetch_assoc()) {
+            $data[$i]['itemID'] = $row['itemID'];
+            $data[$i]['itemName'] = $row['itemName'];
+            $data[$i]['itemQty'] = $row['itemQty'];
+            $data[$i]['itemPrice'] = $row['itemPrice'];
+            $data[$i]['itemDescription'] = $row['itemDescription'];
+            $i++;
+        }
+
+        return $data;
     }
 
     public function getAllItems(): array

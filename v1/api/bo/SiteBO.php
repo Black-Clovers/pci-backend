@@ -8,7 +8,7 @@ interface SiteBO
 
     public function deleteSite($id): bool;
 
-    public function searchSite($id);
+    public function searchSite($id): array;
 
     public function updateSite(Site $site): bool;
 

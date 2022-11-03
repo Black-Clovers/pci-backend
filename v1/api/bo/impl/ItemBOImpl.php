@@ -21,9 +21,12 @@ class ItemBOImpl implements ItemBO
         return true;
     }
 
-    public function searchItem($id)
+    public function searchItem($id): array
     {
-        // TODO: Implement searchItem() method.
+        $itemRepo = new ItemRepoImpl();
+        $connection = (new DBConnection())->getConnection();
+        $itemRepo->setConnection($connection);
+        return $itemRepo->searchItem($id);
     }
 
     public function updateItem(Item $item): bool

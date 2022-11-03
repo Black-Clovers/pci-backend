@@ -8,7 +8,7 @@ interface ItemBO
 
     public function deleteItem($code): bool;
 
-    public function searchItem($code);
+    public function searchItem($code): array;
 
     public function updateItem(Item $i): bool;
 

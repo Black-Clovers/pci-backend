@@ -30,9 +30,9 @@ class ItemService
         return $this->itemBO->updateItem($item);
     }
 
-    public function searchItem($code)
+    public function searchItem($id)
     {
-        return $this->itemBO->searchItem($code);
+        return $this->itemBO->searchItem($id);
     }
 
     public function getAllItems(): array

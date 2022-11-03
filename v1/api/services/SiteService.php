@@ -30,7 +30,7 @@ class SiteService
         return $this->siteBO->updateSite($site);
     }
 
-    public function searchSite($id)
+    public function searchSite($id): array
     {
         return $this->siteBO->searchSite($id);
     }

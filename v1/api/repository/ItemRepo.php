@@ -12,7 +12,7 @@ interface ItemRepo
 
     public function updateItem(Item $item): bool;
 
-    public function searchItem($code);
+    public function searchItem($code): array;
 
     public function getAllItems(): array;
 
