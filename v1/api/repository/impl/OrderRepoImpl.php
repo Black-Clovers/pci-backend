@@ -23,7 +23,7 @@ class OrderRepoImpl implements OrderRepo
 
     public function deleteOrder($id): bool
     {
-        $response = $this->connection->query("DELETE FROM orders WHERE orderId='{$id}'");
+            $response = $this->connection->query("DELETE FROM orders WHERE orderId='{$id}'");
         if ($response > 0 && $this->connection->affected_rows > 0) {
             return true;
         } else {
