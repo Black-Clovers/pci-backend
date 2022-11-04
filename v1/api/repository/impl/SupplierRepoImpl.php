@@ -31,13 +31,13 @@ class SupplierRepoImpl implements SupplierRepo
     public function searchSupplier($id): array
     {
         $data = [];
-        $resultSet = $this->connection->query("SELECT * FROM supplier WHERE supplierId='{$id}'");
+        $resultSet = $this->connection->query("SELECT * FROM supplier");
         $i = 0;
         while ($row = $resultSet->fetch_assoc()) {
-            $data[$i]['supplierId'] = $row['supplierAddress'];
-            $data[$i]['supplierName'] = $row['supplierAddress'];
-            $data[$i]['supplierEmail'] = $row['supplierAddress'];
-            $data[$i]['supplierMobile'] = $row['supplierAddress'];
+            $data[$i]['supplierId'] = $row['supplierId'];
+            $data[$i]['supplierName'] = $row['supplierName'];
+            $data[$i]['supplierEmail'] = $row['supplierEmail'];
+            $data[$i]['supplierMobile'] = $row['supplierMobile'];
             $data[$i]['supplierAddress'] = $row['supplierAddress'];
             $i++;
         }
@@ -61,10 +61,10 @@ class SupplierRepoImpl implements SupplierRepo
         $resultSet = $this->connection->query("SELECT * FROM supplier");
         $i = 0;
         while ($row = $resultSet->fetch_assoc()) {
-            $data[$i]['supplierId'] = $row['supplierAddress'];
-            $data[$i]['supplierName'] = $row['supplierAddress'];
-            $data[$i]['supplierEmail'] = $row['supplierAddress'];
-            $data[$i]['supplierMobile'] = $row['supplierAddress'];
+            $data[$i]['supplierId'] = $row['supplierId'];
+            $data[$i]['supplierName'] = $row['supplierName'];
+            $data[$i]['supplierEmail'] = $row['supplierEmail'];
+            $data[$i]['supplierMobile'] = $row['supplierMobile'];
             $data[$i]['supplierAddress'] = $row['supplierAddress'];
             $i++;
         }

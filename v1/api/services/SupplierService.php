@@ -16,26 +16,26 @@ class SupplierService
 
     public function addSupplier(Supplier $supplier): bool
     {
-        return $this->addSupplier($supplier);
+        return $this->supplierBO->addSupplier($supplier);
     }
 
     public function deleteSupplier($id): bool
     {
-        return $this->deleteSupplier($id);
+        return $this->supplierBO->deleteSupplier($id);
     }
 
     public function searchSupplier($id): array
     {
-        return $this->searchSupplier($id);
+        return $this->supplierBO->searchSupplier($id);
     }
 
     public function updateSupplier(Supplier $supplier): bool
     {
-        return $this->updateSupplier($supplier);
+        return $this->supplierBO->updateSupplier($supplier);
     }
 
     public function getAllSupplier(): array
     {
-        return $this->getAllSupplier();
+        return $this->supplierBO->getAllSupplier();
     }
 }
