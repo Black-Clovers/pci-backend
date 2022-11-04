@@ -12,7 +12,7 @@ class OrderService
      */
     public function __construct()
     {
-        $this->orderBO = (new OrderRepoImpl());
+        $this->orderBO = (new OrderBOImpl());
     }
 
 

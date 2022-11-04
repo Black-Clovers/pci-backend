@@ -16,7 +16,7 @@ require_once __DIR__ . "./../../../../api/services/OrderService.php";
 $orderService = new OrderService();
 if ($method === 'POST') {
     $data = json_decode(file_get_contents('php://input'));
-    if (!empty($data->itemName)) {
+    if (!empty($data->companyName)) {
         $orderData = new Order($data->orderId, $data->companyName, $data->supplierName,
             $data->deliveryAddress, $data->referenceNumber, $data->dates, $data->quantity,
             $data->descriptionAgreedPrice);
