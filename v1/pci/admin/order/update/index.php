@@ -11,7 +11,7 @@ if ($method == "OPTIONS") {
     die();
 }
 
-require_once __DIR__ . "./../../../../api/services/ItemService.php";
+require_once __DIR__ . "./../../../../api/services/OrderService.php";
 
 $orderService = new OrderService();
 if ($method === 'PUT') {
