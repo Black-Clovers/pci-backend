@@ -16,4 +16,9 @@ class SiteManagerService
     {
         return false;
     }
+
+    function getAllSite(): array
+    {
+        return array();
+    }
 }

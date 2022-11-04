@@ -11,10 +11,10 @@ if ($method == "OPTIONS") {
     die();
 }
 
-require_once __DIR__ . "./../../../../api/services/SiteManagerService.php";
+require_once __DIR__ . "./../../../../api/services/SiteService.php";
 
-$siteManagerService = new SiteManagerService();
+$siteService = new SiteService();
 if ($method === "GET") {
-    $siteManagersArray = $siteManagerService->getAllSite();
-    echo json_encode($siteManagersArray);
+    $siteArray = $siteService->getAllSite();
+    echo json_encode($siteArray);
 }
