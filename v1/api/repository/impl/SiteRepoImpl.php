@@ -14,7 +14,8 @@ class SiteRepoImpl implements SiteRepo
 
     public function addSite(Site $site): bool
     {
-        $response = $this->connection->query("INSERT INTO site(siteName,siteLocation,projectBudet) VALUES ('{$site->getSiteName()}','{$site->getSiteLocation()}','{$site->getProjectBudet()}')");
+        $response = $this->connection->query("INSERT INTO site(siteName,siteLocation,projectBudet) 
+            VALUES ('{$site->getSiteName()}','{$site->getSiteLocation()}','{$site->getProjectBudet()}')");
         if ($response > 0 && $this->connection->affected_rows > 0) {
             return true;
         } else {
@@ -35,7 +36,9 @@ class SiteRepoImpl implements SiteRepo
 
     public function updateSite(Site $site): bool
     {
-        $response = $this->connection->query("UPDATE site SET siteName='{$site->getSiteName()}',siteLocation='{$site->getSiteLocation()}',projectBudet='{$site->getProjectBudet()}' WHERE siteID='{$site->getSiteId()}'");
+        $response = $this->connection->query("UPDATE site SET siteName='{$site->getSiteName()}',
+                siteLocation='{$site->getSiteLocation()}',projectBudet='{$site->getProjectBudet()}' 
+            WHERE siteID='{$site->getSiteId()}'");
         if ($response > 0 && $this->connection->affected_rows > 0) {
             return true;
         } else {

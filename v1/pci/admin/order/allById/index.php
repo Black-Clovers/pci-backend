@@ -14,7 +14,12 @@ if ($method == "OPTIONS") {
 require_once __DIR__ . "./../../../../api/services/OrderService.php";
 
 $orderService = new OrderService();
-if ($method === "GET") {
-    $orderArray = $orderService->getAllOrder();
-    echo json_encode($orderArray);
+
+if ($method === 'GET') {
+    $data = json_decode(file_get_contents('php://input'));
+    if (!empty($data->orderId)) {
+        $id = $data->orderId;
+        $orderData = $orderService->searchOrder($id);
+        return json_encode($orderData);
+    }
 }

@@ -1,163 +1,43 @@
 <?php
+require_once __DIR__ . "./../model/Order.php";
+require_once __DIR__ . "./../bo/impl/OrderBOImpl.php";
 
 class OrderService
 {
-    private $orderId;
-    private $companyName;
-    private $supplierName;
-    private $deliveryAddress;
-    private $referenceNumber;
-    private $dates;
-    private $quantity;
-    private $descriptionAgreedPrice;
+
+    private $orderBO;
 
     /**
-     * @param $orderId
-     * @param $companyName
-     * @param $supplierName
-     * @param $deliveryAddress
-     * @param $referenceNumber
-     * @param $dates
-     * @param $quantity
-     * @param $descriptionAgreedPrice
+     * @param $orderBO
      */
-    public function __construct($orderId, $companyName, $supplierName, $deliveryAddress, $referenceNumber, $dates, $quantity, $descriptionAgreedPrice)
+    public function __construct()
     {
-        $this->orderId = $orderId;
-        $this->companyName = $companyName;
-        $this->supplierName = $supplierName;
-        $this->deliveryAddress = $deliveryAddress;
-        $this->referenceNumber = $referenceNumber;
-        $this->dates = $dates;
-        $this->quantity = $quantity;
-        $this->descriptionAgreedPrice = $descriptionAgreedPrice;
+        $this->orderBO = (new OrderRepoImpl());
     }
 
-    /**
-     * @return mixed
-     */
-    public function getOrderId()
+
+    public function addOrder(Order $order): bool
     {
-        return $this->orderId;
+        return $this->orderBO->addOrder($order);
     }
 
-    /**
-     * @param mixed $orderId
-     */
-    public function setOrderId($orderId)
+    public function deleteOrder($id): bool
     {
-        $this->orderId = $orderId;
+        return $this->orderBO->deleteOrder($id);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCompanyName()
+    public function searchOrder($id): array
     {
-        return $this->companyName;
+        return $this->orderBO->searchOrder($id);
     }
 
-    /**
-     * @param mixed $companyName
-     */
-    public function setCompanyName($companyName)
+    public function updateOrder(Order $order): bool
     {
-        $this->companyName = $companyName;
+        return $this->orderBO->updateOrder($order);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSupplierName()
+    public function getAllOrder(): array
     {
-        return $this->supplierName;
-    }
-
-    /**
-     * @param mixed $supplierName
-     */
-    public function setSupplierName($supplierName)
-    {
-        $this->supplierName = $supplierName;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDeliveryAddress()
-    {
-        return $this->deliveryAddress;
-    }
-
-    /**
-     * @param mixed $deliveryAddress
-     */
-    public function setDeliveryAddress($deliveryAddress)
-    {
-        $this->deliveryAddress = $deliveryAddress;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getReferenceNumber()
-    {
-        return $this->referenceNumber;
-    }
-
-    /**
-     * @param mixed $referenceNumber
-     */
-    public function setReferenceNumber($referenceNumber)
-    {
-        $this->referenceNumber = $referenceNumber;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDates()
-    {
-        return $this->dates;
-    }
-
-    /**
-     * @param mixed $dates
-     */
-    public function setDates($dates)
-    {
-        $this->dates = $dates;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
-     * @param mixed $quantity
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescriptionAgreedPrice()
-    {
-        return $this->descriptionAgreedPrice;
-    }
-
-    /**
-     * @param mixed $descriptionAgreedPrice
-     */
-    public function setDescriptionAgreedPrice($descriptionAgreedPrice)
-    {
-        $this->descriptionAgreedPrice = $descriptionAgreedPrice;
+        return $this->orderBO->getAllOrder();
     }
 }
