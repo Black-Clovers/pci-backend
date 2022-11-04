@@ -24,7 +24,13 @@ class SiteRepoImpl implements SiteRepo
 
     public function deleteSite($id): bool
     {
-        return false;
+        $response = $this->connection->query("DELETE FROM site WHERE siteID='{$id}'");
+        if ($response > 0 && $this->connection->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     public function updateSite(Site $site): bool

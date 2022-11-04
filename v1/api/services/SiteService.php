@@ -35,7 +35,7 @@ class SiteService
         return $this->siteBO->searchSite($id);
     }
 
-    public function getAllSite()
+    public function getAllSite(): array
     {
         return $this->siteBO->getAllSite();
     }

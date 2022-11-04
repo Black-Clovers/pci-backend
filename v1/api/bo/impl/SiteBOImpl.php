@@ -24,7 +24,10 @@ class SiteBOImpl implements SiteBO
 
     public function deleteSite($id): bool
     {
-        return false;
+        $siteRepo = new SiteRepoImpl();
+        $connection = (new DBConnection())->getConnection();
+        $siteRepo->setConnection($connection);
+        return $siteRepo->deleteSite($id);
     }
 
     public function searchSite($id): array

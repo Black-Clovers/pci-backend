@@ -14,7 +14,12 @@ if ($method == "OPTIONS") {
 require_once __DIR__ . "./../../../../api/services/SupplierService.php";
 
 $supplierService = new SupplierService();
-if ($method === "GET") {
-    $siteArray = $supplierService->getAllSupplier();
-    echo json_encode($siteArray);
+
+if ($method === 'GET') {
+    $data = json_decode(file_get_contents('php://input'));
+    if (!empty($data->supplierId)) {
+        $id = $data->supplierId;
+        $supplierData = $supplierService->searchSupplier($id);
+        return json_encode($supplierData);
+    }
 }
