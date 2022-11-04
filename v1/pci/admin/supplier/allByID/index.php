@@ -15,7 +15,7 @@ require_once __DIR__ . "./../../../../api/services/SupplierService.php";
 
 $supplierService = new SupplierService();
 
-if ($method === 'GET') {
+if ($method === "GET") {
     $data = json_decode(file_get_contents('php://input'));
     if (!empty($data->supplierId)) {
         $id = $data->supplierId;

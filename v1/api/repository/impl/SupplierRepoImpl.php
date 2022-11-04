@@ -31,7 +31,7 @@ class SupplierRepoImpl implements SupplierRepo
     public function searchSupplier($id): array
     {
         $data = [];
-        $resultSet = $this->connection->query("SELECT * FROM supplier");
+        $resultSet = $this->connection->query("SELECT * FROM supplier WHERE supplierId='{$id}'");
         $i = 0;
         while ($row = $resultSet->fetch_assoc()) {
             $data[$i]['supplierId'] = $row['supplierId'];
