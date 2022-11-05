@@ -19,7 +19,7 @@ if ($method === 'POST') {
     if (!empty($data->companyName)) {
         $orderData = new Order($data->orderId, $data->companyName, $data->supplierName,
             $data->deliveryAddress, $data->referenceNumber, $data->dates, $data->quantity,
-            $data->descriptionAgreedPrice);
+            $data->descriptionAgreedPrice, $data->status);
         $response = $orderService->addOrder($orderData);
         if ($response) {
             echo json_encode(array(

@@ -13,7 +13,7 @@ class OrderRepoImpl implements OrderRepo
                                                     referenceNumber,dates,quantity,descriptionAgreedPrice) 
                     VALUES('{$order->getCompanyName()}','{$order->getSupplierName()}','{$order->getDeliveryAddress()}',
                                     '{$order->getReferenceNumber()}','{$order->getDates()}','{$order->getQuantity()}',
-                                                                            '{$order->getDescriptionAgreedPrice()}'");
+                                                                            '{$order->getDescriptionAgreedPrice()}','{$order->getStatus()}'");
         if ($response > 0 && $this->connection->affected_rows > 0) {
             return true;
         } else {
@@ -23,13 +23,12 @@ class OrderRepoImpl implements OrderRepo
 
     public function deleteOrder($id): bool
     {
-            $response = $this->connection->query("DELETE FROM orders WHERE orderId='{$id}'");
+        $response = $this->connection->query("DELETE FROM orders WHERE orderId='{$id}'");
         if ($response > 0 && $this->connection->affected_rows > 0) {
             return true;
         } else {
             return false;
         }
-
     }
 
     public function searchOrder($id): array
@@ -47,6 +46,7 @@ class OrderRepoImpl implements OrderRepo
             $data[$i]['dates'] = $row['dates'];
             $data[$i]['quantity'] = $row['quantity'];
             $data[$i]['descriptionAgreedPrice'] = $row['descriptionAgreedPrice'];
+            $data[$i]['status'] = $row['status'];
             $i++;
         }
 
@@ -58,7 +58,7 @@ class OrderRepoImpl implements OrderRepo
         $response = $this->connection->query("UPDATE orders SET companyName='{$order->getCompanyName()}',
                 supplierName='{$order->getSupplierName()}',deliveryAddress='{$order->getDeliveryAddress()}' 
                 referenceNumber='{$order->getReferenceNumber()}',dates='{$order->getDates()}' 
-                quantity='{$order->getQuantity()}',descriptionAgreedPrice='{$order->getDescriptionAgreedPrice()}' 
+                quantity='{$order->getQuantity()}',descriptionAgreedPrice='{$order->getDescriptionAgreedPrice()}',status='{$order->getStatus()}'  
             WHERE orderId='{$order->getOrderId()}'");
         if ($response > 0 && $this->connection->affected_rows > 0) {
             return true;
@@ -81,6 +81,7 @@ class OrderRepoImpl implements OrderRepo
             $data[$i]['dates'] = $row['dates'];
             $data[$i]['quantity'] = $row['quantity'];
             $data[$i]['descriptionAgreedPrice'] = $row['descriptionAgreedPrice'];
+            $data[$i]['status'] = $row['status'];
             $i++;
         }
 

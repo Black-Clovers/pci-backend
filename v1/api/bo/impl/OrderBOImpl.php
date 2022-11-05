@@ -13,9 +13,17 @@ class OrderBOImpl implements OrderBO
         $orderRepo = new OrderRepoImpl();
         $connection = (new DBConnection())->getConnection();
         $orderRepo->setConnection($connection);
-        $newOrder = new Order($order->getOrderId(), $order->getCompanyName(), $order->getSupplierName(),
-            $order->getDeliveryAddress(), $order->getReferenceNumber(), $order->getDates(), $order->getQuantity(),
-            $order->getDescriptionAgreedPrice());
+        $newOrder = new Order(
+            $order->getOrderId(),
+            $order->getCompanyName(),
+            $order->getSupplierName(),
+            $order->getDeliveryAddress(),
+            $order->getReferenceNumber(),
+            $order->getDates(),
+            $order->getQuantity(),
+            $order->getDescriptionAgreedPrice(),
+            $order->getStatus()
+        );
         $res = $orderRepo->addOrder($newOrder);
         if ($res) {
             return true;
@@ -45,9 +53,17 @@ class OrderBOImpl implements OrderBO
         $orderRepo = new OrderRepoImpl();
         $connection = (new DBConnection())->getConnection();
         $orderRepo->setConnection($connection);
-        $newOrder = new Order($order->getOrderId(), $order->getCompanyName(), $order->getSupplierName(),
-            $order->getDeliveryAddress(), $order->getReferenceNumber(), $order->getDates(), $order->getQuantity(),
-            $order->getDescriptionAgreedPrice());
+        $newOrder = new Order(
+            $order->getOrderId(),
+            $order->getCompanyName(),
+            $order->getSupplierName(),
+            $order->getDeliveryAddress(),
+            $order->getReferenceNumber(),
+            $order->getDates(),
+            $order->getQuantity(),
+            $order->getDescriptionAgreedPrice(),
+            $order->getStatus()
+        );
         return $orderRepo->updateOrder($newOrder);
     }
 

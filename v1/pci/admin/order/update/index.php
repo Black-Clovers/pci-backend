@@ -17,9 +17,17 @@ $orderService = new OrderService();
 if ($method === 'PUT') {
     $data = json_decode(file_get_contents('php://input'));
     if (!empty($data->orderId)) {
-        $orderData = new Order($data->orderId, $data->companyName, $data->supplierName,
-            $data->deliveryAddress, $data->referenceNumber, $data->dates, $data->quantity,
-            $data->descriptionAgreedPrice);
+        $orderData = new Order(
+            $data->orderId,
+            $data->companyName,
+            $data->supplierName,
+            $data->deliveryAddress,
+            $data->referenceNumber,
+            $data->dates,
+            $data->quantity,
+            $data->descriptionAgreedPrice,
+            $data->status
+        );
         $response = $orderService->addOrder($orderData);
         if ($response) {
             echo json_encode(array(
