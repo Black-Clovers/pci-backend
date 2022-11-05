@@ -10,6 +10,7 @@ class Order
     private $dates;
     private $quantity;
     private $descriptionAgreedPrice;
+    private $status;
 
     /**
      * @param $orderId
@@ -21,7 +22,7 @@ class Order
      * @param $quantity
      * @param $descriptionAgreedPrice
      */
-    public function __construct($orderId, $companyName, $supplierName, $deliveryAddress, $referenceNumber, $dates, $quantity, $descriptionAgreedPrice)
+    public function __construct($orderId, $companyName, $supplierName, $deliveryAddress, $referenceNumber, $dates, $quantity, $descriptionAgreedPrice, $status)
     {
         $this->orderId = $orderId;
         $this->companyName = $companyName;
@@ -31,6 +32,7 @@ class Order
         $this->dates = $dates;
         $this->quantity = $quantity;
         $this->descriptionAgreedPrice = $descriptionAgreedPrice;
+        $this->status = $status;
     }
 
     /**
@@ -159,6 +161,22 @@ class Order
     public function setDescriptionAgreedPrice($descriptionAgreedPrice)
     {
         $this->descriptionAgreedPrice = $descriptionAgreedPrice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param mixed $descriptionAgreedPrice
+     */
+    public function setStatus($status)
+    {
+        $this->$status = $status;
     }
 
 }
